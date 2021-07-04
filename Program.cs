@@ -23,19 +23,24 @@ namespace SENG8040_Assignment02
                     Console.Write("Please enter side 3 length:");
                     Int32.TryParse(Console.ReadLine(), out side3);
 
-                    //check whether triangle sides are valid
-                    if ((side1 + side2 > side3) && (side2 + side3 > side1) && (side1 + side3 > side2))
+                    string output = TriangleSolver.Analyze(side1, side2, side3);
+                    switch(output)
                     {
-                        Console.WriteLine("Triangle is valid");
-                        TriangleSolver.Analyze(side1, side2, side3);
-                    }
-                    else
-                    {
-                        Console.WriteLine("The given sides cannot form a Triangle ");
+                        case "not_a_triangle":
+                            Console.WriteLine("The given sides cannot form a triangle");
+                            break;
+                        case "equilateral":
+                            Console.WriteLine("The given sides form an equilateral triangle");
+                            break;
+                        case "isosceles":
+                            Console.WriteLine("The given sides form an isosceles triangle");
+                            break;
+                        case "scalene":
+                            Console.WriteLine("The given sides form a scalene triangle");
+                            break;
                     }
                 }
             } while ( userInput != 2 );
-            Console.WriteLine("Hello World!");
         }
     }
 }

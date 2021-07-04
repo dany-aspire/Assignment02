@@ -8,14 +8,20 @@ namespace SENG8040_Assignment02
 {
     public static class TriangleSolver
     {
-        public static void Analyze(int side1, int side2, int side3)
+        public static string Analyze(int side1, int side2, int side3)
         {
-            if ( side1 == side2 && side2 == side3 && side1 == side3)
-                Console.WriteLine("The triangle is equilateral");
-            else if ( side1 == side2 || side2 == side3 || side1 == side3)
-                Console.WriteLine("The triangle is isosceles");
+            if ((side1 + side2 > side3) && (side2 + side3 > side1) && (side1 + side3 > side2))
+                if ( side1 == side2 && side2 == side3 && side1 == side3)
+                    return "equilateral";
+                else if ( side1 == side2 || side2 == side3 || side1 == side3)
+                    return "isosceles";
+                else
+                    return "scalene";
             else
-                Console.WriteLine("The triangle is scalene");
+            {
+                return "not_a_triangle";
+
+            }
         }
     }
 }
